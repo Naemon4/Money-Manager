@@ -1,0 +1,1 @@
+Estou fazendo este projeto para ajudar pessoas a terem controle do proprio dinheiro, a pedido de um amigo meu.
