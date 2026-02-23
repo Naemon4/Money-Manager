@@ -8,7 +8,6 @@ export class ReservaOuInvestimento extends Model {
   declare descricao: string;
   declare valor: number;
   declare data_que_foi_pago: string;
-  declare relatorioId: number;
 }
 
 ReservaOuInvestimento.init(
@@ -21,5 +20,6 @@ ReservaOuInvestimento.init(
   { sequelize, modelName: "reserva_ou_investimento" }
 );
 
-RelatorioMes.hasMany(ReservaOuInvestimento, { foreignKey: "relatorioId" });
-ReservaOuInvestimento.belongsTo(RelatorioMes, { foreignKey: "relatorioId" });
+RelatorioMes.belongsToMany(ReservaOuInvestimento, { through: "RelatorioReservaOuInvestimento" });
+ReservaOuInvestimento.belongsToMany(RelatorioMes, { through: "RelatorioReservaOuInvestimento" });
+
