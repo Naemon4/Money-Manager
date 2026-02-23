@@ -8,7 +8,6 @@ export class GastosFixos extends Model {
   declare descricao: string;
   declare valor: number;
   declare data_que_foi_pago: string;
-  declare relatorioId: number;
 }
 
 GastosFixos.init(
@@ -21,5 +20,5 @@ GastosFixos.init(
   { sequelize, modelName: "gastosFixos" }
 );
 
-RelatorioMes.hasMany(GastosFixos, { foreignKey: "relatorioId" });
-GastosFixos.belongsTo(RelatorioMes, { foreignKey: "relatorioId" });
+RelatorioMes.belongsToMany(GastosFixos, { through: "RelatorioGastosFixos" });
+GastosFixos.belongsToMany(RelatorioMes, { through: "RelatorioGastosFixos" });

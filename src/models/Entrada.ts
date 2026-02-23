@@ -6,7 +6,6 @@ export class Entrada extends Model {
   declare id: number;
   declare nome: string;
   declare valor: number;
-  declare relatorioId: number;
 }
 
 Entrada.init(
@@ -18,5 +17,5 @@ Entrada.init(
   { sequelize, modelName: "entrada" }
 );
 
-RelatorioMes.hasMany(Entrada, { foreignKey: "relatorioId" });
-Entrada.belongsTo(RelatorioMes, { foreignKey: "relatorioId" });
+RelatorioMes.belongsToMany(Entrada, { through: "RelatorioEntrada" })
+Entrada.belongsToMany(RelatorioMes, { through: "relatorioId" });
