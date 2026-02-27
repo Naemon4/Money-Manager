@@ -3,13 +3,19 @@ import { Request, Response } from "express";
 import { RelatorioMes } from "../models/RelatorioMes";
 
 export class RelatorioMesController {
-    static async criar(req: Request, res:Response) {
+    static async criar(req: Request, res: Response) {
 
-        const novoRelatorio = await RelatorioMes.create({
-            data: new Date().toISOString().split('T')[0]
-        })
+        try {
 
-        res.json({success: true, novoRelatorio})
+            const novoRelatorio = await RelatorioMes.create({
+                data: new Date().toISOString().split('T')[0]
+            })
+
+            res.status(201).json({ success: true, novoRelatorio })
+
+        } catch (error) {
+            res.status(500).json({message: "não foi possivel criar um relatório do mes"})
+        }
 
     }
 }
