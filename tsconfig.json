@@ -8,7 +8,7 @@
     "target": "ES2020",
     "module": "CommonJS",
     "lib": ["ES2020"],
-    "types": ["node"],
+    "types": ["node", "jest"],
 
     /* Saídas */
     "sourceMap": true,
